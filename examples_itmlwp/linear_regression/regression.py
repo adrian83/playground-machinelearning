@@ -9,5 +9,10 @@ lr = LinearRegression().fit(train_features, train_labels)
 training_score = lr.score(train_features, train_labels)
 test_score = lr.score(test_features, test_labels)
 
+coefficients = lr.coef_
+intercept = lr.intercept_
+
+print("Coefficients: {}".format(coefficients))
+print("Intercept: {}".format(intercept))
 print("Training set score: {:.2f}".format(training_score))
 print("Test set score: {:.2f}".format(test_score))
