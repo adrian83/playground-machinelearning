@@ -15,7 +15,7 @@ with tf.Session() as session:
     for array in arrays:
         print("")
         print(array[0])
-        print("Dimention(s): {0}".format(array[1].ndim))
+        print("Dimention(s): {0}".format(array[1].ndim)) 
         print("Shape: {0}".format(array[1].shape))
         print("Data type: {0}".format(array[1].dtype))
         print("")
