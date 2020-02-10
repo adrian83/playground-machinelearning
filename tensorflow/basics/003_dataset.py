@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
 
     my_data = [
         [0, 1,],
@@ -11,7 +11,7 @@ with tf.Session() as sess:
     ]
 
     slices = tf.data.Dataset.from_tensor_slices(my_data)
-    next_item = slices.make_one_shot_iterator().get_next()
+    next_item = tf.compat.v1.data.make_one_shot_iterator(slices).get_next()
 
     while True:
         try:
