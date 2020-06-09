@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "virtenv/bin/python2.7",
-    "python.linting.pylintEnabled": false,
-    "python.linting.enabled": true,
-    "python.linting.pep8Enabled": true
-}
