@@ -1,6 +1,7 @@
 import os
 import tarfile
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from six.moves import urllib
 
@@ -27,6 +28,14 @@ def load_housing_data():
     csv_path = os.path.join(HOUSING_PATH, "housing.csv")
     return pd.read_csv(csv_path)
 
+def split_train_test(data, test_ratio):
+    shuffled_indices = np.random.permutation(len(data))
+    test_set_size = int(len(data) * test_ratio)
+    test_indices = shuffled_indices[:test_set_size]
+    train_indices = shuffled_indices[test_set_size:] 
+    return data.iloc[train_indices], data.iloc[test_indices]
+
+
 
 fetch_housing_data()
 data = load_housing_data()
@@ -45,6 +54,15 @@ print(str(data.describe()))
 
 print("\n ------------- SHOW HISTOGRAM ------------- \n")
 data.hist(bins=50, figsize=(20,15))
+#plt.show()
+
+print("\n ------------- SPLIT DATA ------------- \n")
+train_set, test_set = split_train_test(data, 0.2)
+print("train data len: {0}, test data len: {1}".format(len(train_set), len(test_set)))
+
+print("\n ------------- SHOW PLOT (GEO) ------------- \n")
+data.plot(kind="scatter", x="longitude", y="latitude", alpha=0.4, 
+    s=data["population"]/100, label="Population", figsize=(10,4), 
+    cmap=plt.get_cmap("jet"), colorbar=True, c="median_house_value")
+plt.legend()
 plt.show()
-
-

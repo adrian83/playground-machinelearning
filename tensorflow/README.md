@@ -25,3 +25,7 @@
 
 #### Steps
 1. `sudo docker run -it --rm -v $PWD:/tmp -w /tmp tensorflow/tensorflow python ./test_installation.py`
+
+
+### Misc
+1. Make sure you have installed `tkinter` (also called `tk`)
